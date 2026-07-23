@@ -1,8 +1,6 @@
 # Moviesdb.
-echo "# Moviesdb" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/shaikazam71-sys/Moviesdb.git
-git push -u origin main
+select * from moviesdb.movies where industry= "bollywood"
+select * from moviesdb.movies where industry= "hollywood"
+select * from moviesdb.movies where imdb_rating>7
+
+select * from moviesdb.movies order by imdb_rating desc limit 5;
