@@ -1,0 +1,66 @@
+
+
+-- 1. Count total movies in each industry
+SELECT industry,
+       COUNT(*) AS industry_cnt
+FROM movies
+GROUP BY industry;
+
+-- 2. Average IMDb rating by language
+SELECT language,
+       AVG(IMDb_rating) AS avg_rating
+FROM movies
+GROUP BY language;
+
+-- 3. Highest IMDb rating in each industry
+SELECT industry,
+       MAX(IMDb_rating) AS max_rating
+FROM movies
+GROUP BY industry;
+
+-- 4. Minimum IMDb rating by language
+SELECT language,
+       MIN(IMDb_rating) AS min_rating
+FROM movies
+GROUP BY language;
+
+-- 5. Average movie duration by industry
+SELECT industry,
+       AVG(duration) AS avg_duration
+FROM movies
+GROUP BY industry;
+
+-- 6. Count movies with IMDb rating greater than 8
+SELECT industry,
+       COUNT(*) AS total_movies
+FROM movies
+WHERE IMDb_rating > 8
+GROUP BY industry;
+
+-- 7. Languages with average IMDb rating greater than 8
+SELECT language,
+       AVG(IMDb_rating) AS avg_rating
+FROM movies
+GROUP BY language
+HAVING AVG(IMDb_rating) > 8;
+
+-- 8. Industries having at least 3 movies
+SELECT industry,
+       AVG(IMDb_rating) AS avg_rating,
+       COUNT(*) AS total_movies
+FROM movies
+GROUP BY industry
+HAVING COUNT(*) >= 3;
+
+-- ==========================================
+-- Date & Time Functions
+-- ==========================================
+
+-- Current Time
+SELECT CURTIME();
+
+-- Current Date
+SELECT CURDATE();
+
+-- Current Date & Time
+SELECT NOW();
