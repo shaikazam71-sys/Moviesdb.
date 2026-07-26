@@ -1,4 +1,4 @@
-# Moviesdb.
+SQL Practise set
 select * from moviesdb.movies where industry= "bollywood"
 select * from moviesdb.movies where industry= "hollywood"
 select * from moviesdb.movies where imdb_rating>7
