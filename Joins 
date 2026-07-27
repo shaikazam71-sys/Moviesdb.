@@ -1,0 +1,59 @@
+# INNER JOIN
+
+SELECT title,
+studio_name
+FROM movies
+INNER JOIN studios
+ON movies.studio_id = studios.studio_id;
+
+SELECT title,
+studio_name
+FROM movies
+INNER JOIN studios
+USING (studio_id);
+
+SELECT title,
+studio_name,
+language_name
+FROM movies
+INNER JOIN studios
+ON movies.studio_id = studios.studio_id
+INNER JOIN languages
+ON movies.language_id = languages.language_id;
+
+
+  # LEFT JOIN
+
+SELECT title,
+studio_name
+FROM movies
+LEFT JOIN studios
+ON movies.studio_id = studios.studio_id;
+
+SELECT title,
+language_name
+FROM movies
+LEFT JOIN languages
+ON movies.language_id = languages.language_id;
+
+SELECT title,
+studio_name
+FROM movies
+LEFT JOIN studios
+ON movies.studio_id = studios.studio_id
+WHERE studios.studio_id IS NULL;
+
+# RIGHT JOIN
+
+SELECT title,
+studio_name
+FROM movies
+RIGHT JOIN studios
+ON movies.studio_id = studios.studio_id;
+
+SELECT title,
+studio_name
+FROM movies
+RIGHT JOIN studios
+ON movies.studio_id = studios.studio_id
+WHERE movies.studio_id IS NULL;
