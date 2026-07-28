@@ -1,0 +1,125 @@
+FULL OUTER JOIN (Using UNION)
+
+SELECT title, studio_name
+FROM movies m
+LEFT JOIN studios s
+USING (studio_id)
+
+UNION
+
+SELECT title, studio_name
+FROM movies m
+RIGHT JOIN studios s
+USING (studio_id);
+
+---
+
+UNION
+
+SELECT industry, title, release_year
+FROM movies
+WHERE release_year = 2019
+
+UNION
+
+SELECT industry, title, release_year
+FROM movies
+WHERE release_year = 2022;
+
+UNION ALL
+
+SELECT industry, title, release_year
+FROM movies
+WHERE release_year = 2019;
+
+UNION ALL
+
+SELECT industry, title, release_year
+FROM movies
+WHERE release_year = 2022;
+
+---UNION ALL Example
+
+SELECT industry, title, imdb_rating
+FROM movies
+WHERE industry = 'Hollywood'
+
+UNION ALL
+
+SELECT industry, title, imdb_rating
+FROM movies
+WHERE industry = 'Bollywood';
+
+---CASE WHEN – Rating Status
+
+SELECT title,
+       imdb_rating,
+       CASE
+           WHEN imdb_rating >= 8 THEN 'Excellent'
+           ELSE 'Good'
+       END AS rating_status
+FROM movies;
+
+---CASE WHEN – Movie Type
+
+SELECT movie_id,
+       title,
+       industry,
+       CASE
+           WHEN industry = 'Bollywood' THEN 'Hindi Cinema'
+           WHEN industry = 'Hollywood' THEN 'English Cinema'
+           ELSE 'Other Cinema'
+       END AS movie_type
+FROM movies;
+
+---CASE WHEN – Rating Category
+
+SELECT movie_id,
+       title,
+       industry,
+       CASE
+           WHEN imdb_rating >= 8.5 THEN 'Blockbuster'
+           WHEN imdb_rating >= 8 THEN 'Super Hit'
+           WHEN imdb_rating >= 7 THEN 'Hit'
+           ELSE 'Average'
+       END AS rating_category
+FROM movies;
+
+---CASE WHEN – Movie Era
+
+SELECT title,
+       release_year,
+       CASE
+           WHEN release_year >= 2020 THEN 'New'
+           WHEN release_year BETWEEN 2010 AND 2019 THEN 'Modern'
+           ELSE 'Classic'
+       END AS movie_era
+FROM movies
+ORDER BY release_year DESC;
+
+---CASE WHEN – Duration Category
+
+SELECT title,
+       duration,
+       CASE
+           WHEN duration >= 180 THEN 'Very Long'
+           WHEN duration BETWEEN 120 AND 179 THEN 'Long'
+           WHEN duration BETWEEN 90 AND 119 THEN 'Medium'
+           ELSE 'Short'
+       END AS duration_category
+FROM movies
+ORDER BY duration_category;
+
+
+
+---CASE WHEN – Movie Status
+
+SELECT title,
+       industry,
+       imdb_rating,
+       CASE
+           WHEN industry = 'Hollywood' AND imdb_rating >= 8 THEN 'Top Hollywood'
+           WHEN industry = 'Bollywood' AND imdb_rating >= 8 THEN 'Top Bollywood'
+           ELSE 'Regular Movie'
+       END AS movie_status
+FROM movies;
