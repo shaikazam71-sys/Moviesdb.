@@ -1,0 +1,8 @@
+Select * from movies where imdb_rating>(select avg(imdb_rating) from movies);
+
+# Show min,max imdb_rating with the help of subqueries
+
+Select * from movies where imdb_rating in (( select min(imdb_rating) from movies),(select max(imdb_rating) from movies) );
+
+# Show the avg imd_rating of movies which are from Marvel studios 
+select * from movies where studio = "Marvel studios" and imdb_rating=(select avg(imdb_rating) from movies);
