@@ -1,0 +1,10 @@
+
+CREATE FUNCTION `get_fiscal_year` (
+	calendar_date date
+)RETURNS INTEGER
+deterministic
+BEGIN
+	declare fiscal_year int;
+    set fiscal_year = year(date_add(calendar_date,interval 4 month));
+    
+RETURN fiscal_year;
